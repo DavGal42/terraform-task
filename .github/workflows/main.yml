@@ -25,5 +25,17 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-west-2
       
+      - name: Initialize Terraform
+        run: terraform init  
+        
+      - name: Validate Terraform
+        run: terraform validate
+    
+      - name: Format Terraform Files
+        run: terraform fmt
+    
+      - name: Terraform Plan
+        run: terraform plan 
+      
       - name: Destroy Terraform
-        run: terraform destroy --auto-approve
+        run: terraform destroy
